@@ -1,0 +1,35 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <form id="expressForm">
+            <div>
+                <label for="descrption">Choose descrption</label>
+                <input type="text" name="descrption" id="descrptionId">
+            </div>
+            <div>
+                <span for="type">Choose a category:</span>
+                <select  id="type">
+                    <option value="fuel">fuel</option>
+                    <option value="movie">movie</option>
+                    <option value="food">Food</option>
+                </select>
+            </div>
+            <div>
+                <label for="amount">Amount</label>
+                <input type="text" id="amount">
+            </div>
+            <button type="submit">Add expense</button>
+        </form>
+    </div>
+    <ul id="ListOfUser"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
