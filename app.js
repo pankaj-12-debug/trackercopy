@@ -38,24 +38,44 @@ window.addEventListener("DOMContentLoaded",()=>{
 })
 function showList(user)
 {
+    document.getElementById('descrptionId').value='';
+    document.getElementById('type').value='';
+   document.getElementById('amount').value='';
+   console.log('hi');
 const parentNode=document.getElementById('ListOfUser');
-const childHTML=`<li id=${user.descrption}> ${user.descrption}  ${user.type}  ${user.amount}
-<button onclick=deleteUser('${user.descrption}')>Delete User</button>
+const childHTML=`<li id=${user._id}> ${user.descrption}  ${user.type}  ${user.amount}
+<button onclick=deleteUser('${user._id}')>Delete User</button>
+<button onclick=editUser('${user._id}','${user.descrption}','${user.type}','${user.amount}')>edit</button>
 </li>`
 parentNode.innerHTML=parentNode.innerHTML + childHTML;
 }
+// edituser
+function editUser(descrption,type,amount,userId){
+     document.getElementById('descrptionId').value=descrptionId;
+     document.getElementById('type').value=type;
+    document.getElementById('amount').value=amount;
+    delete(userId);
+}
 //delete onscreen and localstorage
+function deleteUser(userId)
+{
+axios.delete(`https://crudcrud.com/api/c104f592207b401b9d47179f5165b907/appointmentData/${userId}`)
+.then((respone)=>{
+    remove(userId)
+})
+.catch((err)=>
+{
+    console.log(err);
+})
 
-
-function deleteUser(descrptionId){
-    console.log(descrptionId);
-    localStorage.removeItem(descrptionId);
-      remove(descrptionId);
+    //console.log(descrptionId);
+    //localStorage.removeItem(descrptionId);
+     // remove(descrptionId);
 }
 // remove on screen
-function remove(descrptionId){
+function remove(userId){
     const parentNode = document.getElementById('ListOfUser');
-    const childNode = document.getElementById(descrptionId);
+    const childNode = document.getElementById(userId);
 console.log(childNode);
 console.log(parentNode);
 parentNode.removeChild(childNode)
