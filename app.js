@@ -11,7 +11,7 @@ function data(e)
     amount,
     type
    }
-     axios.post('https://crudcrud.com/api/c104f592207b401b9d47179f5165b907/appointmentData', object)
+     axios.post('https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData', object)
      .then((respone)=>
      {
         console.log(respone)
@@ -24,11 +24,12 @@ function data(e)
    //showList(object); //show the detail in screen
 }
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/c104f592207b401b9d47179f5165b907/appointmentData")
+    axios.get("https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData")
     .then((respone)=>{
         console.log(respone);
         for(var i=0;i<respone.data.length;i++){
             showList(respone.data[i])
+            console.log("hello world");
         }
     })
     .catch((err)=>{
@@ -38,9 +39,9 @@ window.addEventListener("DOMContentLoaded",()=>{
 })
 function showList(user)
 {
-    document.getElementById('descrptionId').value='';
-    document.getElementById('type').value='';
-   document.getElementById('amount').value='';
+    //document.getElementById('descrptionId').value='';
+    //document.getElementById('type').value='';
+   //document.getElementById('amount').value='';
    console.log('hi');
 const parentNode=document.getElementById('ListOfUser');
 const childHTML=`<li id=${user._id}> ${user.descrption}  ${user.type}  ${user.amount}
@@ -59,7 +60,7 @@ function editUser(descrption,type,amount,userId){
 //delete onscreen and localstorage
 function deleteUser(userId)
 {
-axios.delete(`https://crudcrud.com/api/c104f592207b401b9d47179f5165b907/appointmentData/${userId}`)
+axios.delete(`https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData/${userId}`)
 .then((respone)=>{
     remove(userId)
 })
