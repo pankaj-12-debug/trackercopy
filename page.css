@@ -1,0 +1,13 @@
+*{
+    margin:0;
+    font-family: 'Titillium Web', sans-serif;
+}
+body{
+    color:black
+}
+.form{
+    padding: 5px;
+}
+.left{
+    float: left;
+}
