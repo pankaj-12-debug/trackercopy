@@ -11,10 +11,12 @@ function data(e)
     amount,
     type
    }
-     axios.post('https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData', object)
+     axios.post('https://crudcrud.com/api/b35fa8a7109f4d23b50243e72573a0b5/appointmentData', object)
      .then((respone)=>
      {
+        showList(respone.data)
         console.log(respone)
+
      })
      .catch((err)=>
      {
@@ -24,7 +26,7 @@ function data(e)
    //showList(object); //show the detail in screen
 }
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData")
+    axios.get("https://crudcrud.com/api/b35fa8a7109f4d23b50243e72573a0b5/appointmentData")
     .then((respone)=>{
         console.log(respone);
         for(var i=0;i<respone.data.length;i++){
@@ -39,9 +41,9 @@ window.addEventListener("DOMContentLoaded",()=>{
 })
 function showList(user)
 {
-    //document.getElementById('descrptionId').value='';
-    //document.getElementById('type').value='';
-   //document.getElementById('amount').value='';
+    document.getElementById('descrptionId').value='';
+    document.getElementById('type').value='';
+   document.getElementById('amount').value='';
    console.log('hi');
 const parentNode=document.getElementById('ListOfUser');
 const childHTML=`<li id=${user._id}> ${user.descrption}  ${user.type}  ${user.amount}
@@ -51,16 +53,19 @@ const childHTML=`<li id=${user._id}> ${user.descrption}  ${user.type}  ${user.am
 parentNode.innerHTML=parentNode.innerHTML + childHTML;
 }
 // edituser
-function editUser(descrption,type,amount,userId){
+function editUser(userId,descrptionId,type,amount){
+    console.log(descrptionId);
+    console.log(type);
+    console.log(amount);
      document.getElementById('descrptionId').value=descrptionId;
      document.getElementById('type').value=type;
     document.getElementById('amount').value=amount;
-    delete(userId);
+    deleteUser(userId);
 }
 //delete onscreen and localstorage
 function deleteUser(userId)
 {
-axios.delete(`https://crudcrud.com/api/cc9ed27a0d5f4fba845a76467c6e2323/appointmentData/${userId}`)
+axios.delete(`https://crudcrud.com/api/b35fa8a7109f4d23b50243e72573a0b5/appointmentData/${userId}`)
 .then((respone)=>{
     remove(userId)
 })
